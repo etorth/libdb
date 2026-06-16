@@ -1,3 +1,10 @@
+# Version
+Berkeley DB 12c Release 1 from Oracle, versino 12.1.6.2.32
+
+# Who uses it
+[mir2x](https://github.com/etorth/mir2x)
+
+
 Berkeley DB 12c Release 1, library version 12.1.6.2.32: (April  5, 2017)
 
 This is Berkeley DB 12c Release 1 from Oracle.  To view release and
