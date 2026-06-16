@@ -2,7 +2,7 @@
 Oracle Berkeley DB 12c Release 1 (Version 12.1.6.2.32)
 
 ### Who Uses It
-* [mir2x](https://github.com/etorth/mir2x)
+[mir2x](https://github.com/etorth/mir2x)
 
 ### Why It Is Needed
 `mir2x` features a built-in Pinyin input method, providing out-of-the-box convenience for systems lacking a native Chinese input method. This feature is powered by `libpinyin`, which depends on Berkeley DB. While `libpinyin` can alternatively use Kyoto Cabinet, that alternative also requires patching. When using `vcpkg` as the project's build system, we encounter two main limitations:
