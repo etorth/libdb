@@ -6632,14 +6632,18 @@ else
 fi
 ac_prog_cc_stdc=no
 # Berkeley DB uses pre-C99 (K&R) style function definitions throughout
-# its source tree.  C23 (and toolchains that default to it, such as
-# recent Apple Clang releases) removed support for those definitions,
-# which breaks the build with errors like "unknown type name 'env'"
-# in mut_tas.c/bt_compare.c.  Force autoconf to skip the C23 probe so
-# it never appends -std=gnu23 (or relies on a C23-default compiler),
-# falling back to the compiler's normal default/C11/C99 handling,
-# which still supports the old-style definitions.
-ac_cv_prog_cc_c23=no
+# its source tree (e.g. mut_tas.c, bt_compare.c).  Starting with C23,
+# the language no longer allows those definitions, so building in C23
+# mode (or any later standard) fails with errors like "unknown type
+# name 'env'".  Below, AC_PROG_CC_STDC probes for the newest standard
+# the compiler supports (currently up to C23) and, if found, appends a
+# -std=... flag (or accepts the compiler's own C23-or-later default
+# silently).  Skip that entire probing chain (C23/C11/C99/C89) and
+# instead force an explicit, known-good standard ourselves, so the
+# build is never at the mercy of what a given/future compiler happens
+# to probe as supported or default to.
+ac_prog_cc_stdc=forced
+CC="$CC -std=gnu17"
 if test x$ac_prog_cc_stdc = xno
 then :
   { printf '%s\n' "$as_me:${as_lineno-$LINENO}: checking for $CC option to enable C23 features" >&5
